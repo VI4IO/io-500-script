@@ -61,6 +61,8 @@ echo "# Any modifications (below this line) will be lost if io-500-gen.sh is run
 echo "# However, you may modify/tune this script manually or modify the generator to create an improved io-500.sh"
 io500_job_header # add the job header
 $NEWLINE
+echo "RESULT=$CONF-result-\$(date +%s).txt"
+echo "("
 io500_info # add the info fields
 $NEWLINE
 echo "echo -n \"[START TIME] \""
@@ -134,7 +136,8 @@ $TIME
 echo rm -rf $DATA_DIR/ior_easy $DATA_DIR/ior_hard $DATA_DIR/mdt_hard $DATA_DIR/mdt_easy $DATA_DIR/pfind_results $DATA_DIR/timestampfile $DATA_DIR/mdt_easy-stonewall $DATA_DIR/mdt_hard-stonewall
 echo "echo -n \"[END TIME] \""
 echo "date --rfc-3339=seconds"
-echo "echo [IO-500 COMPLETED] Now use io-500-score.sh to compute the score!"
+echo "echo \"[IO-500 COMPLETED] Result also in \${RESULT}; Now use io-500-score.sh to compute the score\""
+echo ") | tee \${RESULT}"
 )  > $CONF-io-500.sh
 
 chmod 755 $CONF-io-500.sh
