@@ -1,15 +1,15 @@
 #!/bin/bash
 
 echo "Computing the IO-500 score (use io-500-validate.py to run extensive checks!)"
-set -euo pipefail   # give bash better error handling.
-export LC_NUMERIC=C  # prevents printf errors
-
 
 FILE="$1"
 if [[ "$FILE" == "" ]] ; then
   echo "Synopsis: $0 <io500-standard-output>"
   exit 1
 fi
+
+set -euo pipefail   # give bash better error handling.
+export LC_NUMERIC=C  # prevents printf errors
 
 if [[ ! -r "$FILE" ]] ; then
   echo "Can't read from file \"$FILE\""
