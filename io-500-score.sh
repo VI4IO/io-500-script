@@ -25,6 +25,7 @@ fi
 
 function section(){
   sed -n "/$1/{:a;n;/$2/b;p;ba}" "$FILE" > $TMP
+  grep -A 1 "$2" "$FILE" >> $TMP
 }
 
 function print_bw  {
@@ -32,7 +33,13 @@ function print_bw  {
 }
 
 function print_iops  {
-  printf "[RESULT] IOPS %20s %20.3f kiops\n" "$1" "$2"  >&2
+  printf "[RESULT] IOPS %20s %20.3f kiops : time %6.2f seconds\n" "$1" "$2" "$3"  >&2
+}
+
+function getTime(){
+  time=$(grep "^time:" $TMP | awk '{print $2}')
+  time=$(echo $time | awk '{print ($2-$1)}')
+  echo $time
 }
 
 function getIOR(){
@@ -60,7 +67,8 @@ function getMD(){
     echo "Could not parse section $1"  >&2
     exit 1
   fi
-  print_iops "$1" "$data"
+  time=$(getTime)
+  print_iops "$1" "$data" "$time"
   echo "$data"
 }
 
@@ -71,7 +79,8 @@ function getFind(){
     echo "Could not parse section $1"  >&2
     exit 1
   fi
-  print_iops "$1" "$data"
+  time=$(getTime)
+  print_iops "$1" "$data" "$time"
   echo "$data"
 }
 
