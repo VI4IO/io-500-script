@@ -32,7 +32,8 @@ if [[ "$BIN" == "" ||
       "$IOR_EASY_ARGS" == "" ||
       "$IOR_HARD_IO_COUNT" == "" ||
       "$MDTEST_EASY" == "" ||
-      "$MDTEST_HARD_FILE_COUNT" == ""
+      "$MDTEST_HARD_FILE_COUNT" == "" ||
+      "$PFIND_ARGS" == ""
 ]] ; then
   echo "Important variable not set!"
   exit 1
@@ -99,7 +100,7 @@ if [[ "$io_500_userdefined_find" != "" ]] ; then
   echo "$io_500_userdefined_find \"$DATA_DIR\" \"-newer\" \"$DATA_DIR/timestampfile\" \"-size\" \"3901c\" \"-name\" \"*01*\""
 else
   echo "[Find] Using pfind" >&2
-  echo $MPIRUN $BIN/pfind $DATA_DIR -newer $DATA_DIR/timestampfile -size 3901c -name *01* -s $STONEWALL_TIMER -C -P -D rates #-r $DATA_DIR/pfind_results
+  echo $MPIRUN $BIN/pfind $DATA_DIR -newer $DATA_DIR/timestampfile -size 3901c -name *01* $PFIND_ARGS -s $STONEWALL_TIMER -D rates #-r $DATA_DIR/pfind_results
 fi
 $TIME
 $NEWLINE

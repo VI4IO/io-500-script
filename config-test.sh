@@ -19,6 +19,7 @@ IOR_HARD_EXTRA_ARGS=""
 MDTEST_EASY="-n 250 -u -L"
 MDTEST_HARD_FILE_COUNT="150"
 MDTEST_HARD_EXTRA_ARGS=""
+PFIND_ARGS="-C" # use -P for debugging to print the load between processes, -N to use another job stealing distribution (try this)
 
 # Define this variable if you want to use your version of find
 # Note that the find script must be submitted to the IO-500 repository to be available
