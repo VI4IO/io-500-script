@@ -1,6 +1,9 @@
 # README
 
-This is a new version of the IO-500 suite.
+This is an alternative version of the IO-500 suite for testing.
+The official version is found at https://github.com/VI4IO/io-500-dev.  
+However, please free to use this version if you prefer and provide feedback to the IO-500 community or committee.
+
 It is easy to use, minimal during the execution to prevent errors, and easy to debug.
 To achieve these goals, it splits the execution into phases:
  * A generation phase able to check for errors that creates a hard-coded run-script without branches
