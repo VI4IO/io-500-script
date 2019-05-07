@@ -19,6 +19,7 @@ IOR_HARD_EXTRA_ARGS=""
 MDTEST_EASY="-n 250 -u -L"
 MDTEST_HARD_FILE_COUNT="150"
 MDTEST_HARD_EXTRA_ARGS=""
+PFIND_MPIRUN="$MPIRUN" # special mpiexec arguments for pfind. Here set to defaults.
 PFIND_ARGS="-C" # use -P for debugging to print the load between processes, -N to use another job stealing distribution (try this)
 
 # Define this variable if you want to use your version of find

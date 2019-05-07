@@ -18,6 +18,7 @@ IOR_EASY_ARGS="-t 2m -b 2000g -F"
 IOR_HARD_IO_COUNT="100000"
 MDTEST_EASY="-n 25000000 -u -L" # e.g. you may remove -u and -L, if you like
 MDTEST_HARD_FILE_COUNT="10000"
+PFIND_MPIRUN="$MPIRUN" # special mpiexec arguments for pfind. Here set to defaults.
 PFIND_ARGS="-C" # use -P for debugging to print the load between processes, -N to use another job stealing distribution (try this)
 
 # Include here the information for the job scheduler
