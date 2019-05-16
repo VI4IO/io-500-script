@@ -101,7 +101,7 @@ if [[ "$io_500_userdefined_find" != "" ]] ; then
   echo "$io_500_userdefined_find \"$DATA_DIR\" \"-newer\" \"$DATA_DIR/timestampfile\" \"-size\" \"3901c\" \"-name\" \"*01*\""
 else
   echo "[Find] Using pfind" >&2
-  echo $PFIND_MPIRUN $BIN/pfind $DATA_DIR -newer $DATA_DIR/timestampfile -size 3901c -name *01* $PFIND_ARGS -s $STONEWALL_TIMER -D rates #-r $DATA_DIR/pfind_results
+  echo "$PFIND_MPIRUN $BIN/pfind $DATA_DIR -newer $DATA_DIR/timestampfile -size 3901c -name \"*01*\" $PFIND_ARGS -s $STONEWALL_TIMER -D rates #-r $DATA_DIR/pfind_results"
 fi
 $TIME
 $NEWLINE
