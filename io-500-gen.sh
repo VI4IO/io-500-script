@@ -8,7 +8,7 @@
 CONFIG="$1"
 
 if [[ ! -r "$CONFIG" ]] ; then
-  echo "Synopsis: $0 <config.sh>"
+  echo "Synopsis: $0 <config.conf>"
   exit 1
 fi
 
@@ -17,7 +17,7 @@ echo
 
 source $CONFIG
 
-CONF=${CONFIG%%.sh}
+CONF=${CONFIG%%.conf}
 
 # add any check for correctness here
 if [[ "$DATA_DIR" == "" || "$DATA_DIR" = *[[:space:]]* ]] ; then
