@@ -62,6 +62,7 @@ echo "# Any modifications (below this line) will be lost if io-500-gen.sh is run
 echo "# However, you may modify/tune this script manually or modify the generator to create an improved io-500.sh"
 io500_job_header # add the job header
 $NEWLINE
+echo "if [[ -e $DATA_DIR ]] ; then echo 'ERROR directory already exists, aborting' ; exit 1 ; fi"
 echo "RESULT=$CONF-result-\$(date +%s).txt"
 echo "("
 io500_info # add the info fields
@@ -148,7 +149,7 @@ echo "#!/bin/bash"
 echo "# This script removes the data, run it with the same parameters as the original script"
 echo $MPIRUN $BIN/mdtest $MDTEST_EASY -r -F -d $DATA_DIR/mdt_easy -x $DATA_DIR/mdt_easy-stonewall
 echo $MPIRUN $BIN/mdtest $MDTEST_HARD_EXTRA_ARGS -r -t -F -w 3901 -e 3901 -d $DATA_DIR/mdt_hard -n $MDTEST_HARD_FILE_COUNT -x $DATA_DIR/mdt_hard-stonewall
-
+echo "if [[ -e $DATA_DIR/ior_easy ]] ; then rm -rf $DATA_DIR/ ; fi"
 ) > $CONF-io-500-clean.sh
 chmod 755 $CONF-io-500-clean.sh
 
